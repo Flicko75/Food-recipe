@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,9 +19,22 @@
       rel="stylesheet"
     />
     <title>Login Page</title>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- Firebase Config (must load first) -->
+    <script src="firebase-config.js"></script>
+
+
   </head>
+
   <body>
+
     <div class="container" id="container">
+
       <div class="sign-up">
         <form>
           <h1>Create Account</h1>
@@ -30,6 +44,7 @@
           <button>Sign Up</button>
         </form>
       </div>
+
       <div class="sign-in">
         <form>
           <h1>Sign In</h1>
@@ -38,7 +53,9 @@
           <button>Sign In</button>
         </form>
       </div>
+
       <div class="toogle-container">
+
         <div class="toogle">
           <div class="toogle-panel toogle-left">
             <h1>Welcome Admin!</h1>
@@ -51,8 +68,13 @@
             <button class="hidden" id="register">Sign Up</button>
           </div>
         </div>
+
       </div>
+
     </div>
+
+    <!-- Your Main Script -->
     <script src="script-admin-login.js"></script>
+
   </body>
 </html>
