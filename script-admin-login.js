@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.firebaseAuth.createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 let user = userCredential.user;
-                return window.firebaseDB.collection("users").doc(user.uid).set({
+                return window.firebaseDB.collection("admin").doc(user.uid).set({
                     name: name,
                     email: email,
                     createdAt: firebase.firestore.FieldValue.serverTimestamp()
