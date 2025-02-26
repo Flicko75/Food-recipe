@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.firebaseAuth.signInWithEmailAndPassword(email, password)
             .then(() => {
                 alert("Login Successful!");
-                window.location.href = "##";
+                window.location.href = "admin-dashboard.html";
             })
             .catch((error) => alert("Login Error: " + error.message));
     });

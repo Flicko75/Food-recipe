@@ -15,3 +15,9 @@ firebase.initializeApp(firebaseConfig);
 // Expose Firebase globally
 window.firebaseAuth = firebase.auth();
 window.firebaseDB = firebase.firestore();
+
+// // Initialize EmailJS 
+// emailjs.init("UnBt0-SUlvBrGK77k");
+
+// // Expose EmailJS globally
+// window.emailjsService = emailjs;
