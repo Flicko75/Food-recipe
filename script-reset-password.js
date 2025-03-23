@@ -22,8 +22,20 @@ document.getElementById("resetPasswordForm").addEventListener("submit", async (e
     }
 
     try {
-        // Find the user document with the matching email
-        const querySnapshot = await window.firebaseDB.collection("users")
+        // Get the currently logged-in user
+        const user = firebase.auth().currentUser;
+
+        if (!user) {
+            alert("User not logged in. Please log in again.");
+            window.location.href = "user-login.html";
+            return;
+        }
+
+        // Update password in Firebase Authentication
+        await user.updatePassword(newPassword);
+
+        // Find the user document in Firestore and update it
+        const querySnapshot = await firebase.firestore().collection("users")
             .where("email", "==", email)
             .get();
 
@@ -34,18 +46,17 @@ document.getElementById("resetPasswordForm").addEventListener("submit", async (e
 
         let userDocId;
         querySnapshot.forEach(doc => {
-            userDocId = doc.id; // Get the actual user document ID
+            userDocId = doc.id;
         });
 
-        // Now update using the correct document ID
-        await window.firebaseDB.collection("users").doc(userDocId).update({
-            password: newPassword,
+        // Update Firestore to mark the password as changed
+        await firebase.firestore().collection("users").doc(userDocId).update({
             isDefaultPassword: false
         });
 
         alert("Password updated successfully. Redirecting to dashboard...");
         sessionStorage.removeItem("userEmail");
-        window.location.href = "user-dashboard.html"; // Redirect to dashboard
+        window.location.href = "user-dashboard.html";
     } catch (error) {
         console.error("Error updating password:", error);
         alert("Failed to update password. Try again later.");

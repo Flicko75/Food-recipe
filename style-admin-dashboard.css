@@ -630,3 +630,100 @@ body {
     background-color: #f44336;
     color: white;
 }
+
+/* Manage Recipes Section */
+#manage-recipes-section {
+    display: none; /* Hidden by default */
+    width: 80%; /* Adjust width as needed */
+    margin: 20px auto; /* Centers it horizontally */
+    padding: 20px;
+    background: var(--light); /* Match theme */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center; /* Centers the text */
+}
+
+#manage-recipes-section.active {
+    display: block; /* Show when active */
+}
+
+#manage-recipes-section label,
+#manage-recipes-section input,
+#manage-recipes-section button {
+    display: block;
+    margin: 10px auto; /* Center input and button */
+}
+
+#max-recipes-input {
+    padding: 10px;
+    width: 50%; /* Adjust width as needed */
+    text-align: center;
+    border: 1px solid var(--dark-grey);
+    border-radius: 5px;
+}
+
+#max-recipes-btn {
+    padding: 10px 20px;
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#max-recipes-btn:hover {
+    background-color: var(--dark);
+}
+
+
+
+#manage-recipes-section h2 {
+    color: var(--dark);
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#manage-recipes-section label {
+    font-size: 16px;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+#max-recipes {
+    width: 60px;
+    padding: 5px;
+    margin-left: 10px;
+    border: 1px solid var(--dark-grey);
+    border-radius: 5px;
+    text-align: center;
+}
+
+#set-max-recipes {
+    background-color: var(--blue);
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+#set-max-recipes:hover {
+    background-color: #357ABD;
+}
+
+#recipe-status {
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+/* Sidebar active effect */
+#sidebar .side-menu li.active {
+    background: var(--grey);
+}
+
+#sidebar .side-menu li a:hover {
+    color: var(--blue);
+}

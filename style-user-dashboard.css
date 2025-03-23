@@ -1,0 +1,537 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    /* Full viewport height */
+    width: 100vw;
+    /* Full viewport width */
+    overflow: hidden;
+    /* Prevent scrolling */
+    margin: 0;
+    padding: 0;
+    background: url('images/land1.jpg');
+    color: #333;
+}
+
+.logo {
+    font-size: 2rem;
+    /* Increase font size */
+    font-weight: bold;
+    /* Make it bold */
+    text-align: center;
+    /* Center the text */
+    color: #057d83;
+    /* Eye-catching color */
+    text-transform: uppercase;
+    /* Make it stand out */
+    letter-spacing: 2px;
+    /* Add spacing between letters */
+    font-family: 'Poppins', sans-serif;
+    /* Ensure a stylish font */
+    background: linear-gradient(45deg, #72f57d, #036527);
+    /* Gradient effect */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Apply gradient to text */
+    display: block;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    /* Full screen height */
+    gap: 15px;
+    padding: 20px;
+    align-items: flex-start;
+    /* Align everything to the top */
+}
+
+.sidebar {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    width: 20%;
+    box-shadow: 2px 0 10px rgba(9, 199, 31, 0.2);
+    border-radius: 15px;
+    height: 100vh;
+    /* Full height */
+    background-image: url('https://clipart-library.com/new_gallery/120-1209434_nutritional-content-green-transparent-background-png.png');
+    /* background-position: bottom; Move the background image to the bottom */
+    background-repeat: no-repeat;
+    /* Prevent repetition */
+    background-size: contain;
+    /* Ensure the image fits properly */
+    height: 95vh;
+    /* Adjust height to prevent overlap */
+    position: relative;
+    /* Ensure it aligns properly */
+    top: 0;
+    /* Fixes downward shift */
+
+}
+
+
+.left-sidebar {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    width: 20%;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    height: 95vh;
+    /* Adjust height to prevent overlap */
+    position: relative;
+    /* Ensure it aligns properly */
+    top: 0;
+    /* Fixes downward shift */
+}
+
+.content {
+    flex: 1;
+    display: fixed;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu p {
+    margin: 15px 0;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2rem;
+    /* Increase size */
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, rgba(153, 250, 152, 0.1), rgba(10, 219, 42, 0.1));
+    transition: all 0.3s ease-in-out;
+    color: #056428;
+    /* Vibrant text color */
+    letter-spacing: 1px;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu p:hover {
+    background: linear-gradient(45deg, #1b940b, #016f1f);
+    color: white;
+    transform: scale(1.1);
+    /* Slight pop-up effect */
+    box-shadow: 0 4px 15px rgba(3, 146, 15, 0.3);
+}
+
+/* ✨ Glowing Active Menu Item */
+.menu p.active {
+    background: linear-gradient(45deg, #aeed73, #058b36);
+    color: white;
+    box-shadow: 0 4px 20px rgba(4, 169, 29, 0.5);
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+/* 🔥 Fancy Underline Effect */
+.menu p::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    background: #059d4a;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.menu p:hover::after {
+    width: 70%;
+    left: 15%;
+}
+
+
+.banner {
+    background: url('https://clipart-library.com/new_gallery/120-1209434_nutritional-content-green-transparent-background-png.png');
+    background-repeat: no-repeat;
+    /* Prevent repetition */
+    background-size: cover;
+    /* Ensure the image fits properly */
+    color: rgb(19, 21, 19);
+    padding: 20px;
+
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 2px 2px 15px rgba(167, 244, 73, 0.2);
+    width: 95%;
+}
+
+/* 🌟 Section Title Styling */
+.section-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #069f31;
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(45deg, #6ceba5, #04791e);
+    display: block;
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+.scrollable-container {
+    max-height: 600px;
+    /* Adjust the max height as needed */
+    overflow-y: auto;
+    /* Enables vertical scrolling */
+    border: 1px solid #ccc;
+    /* Optional: Adds a border */
+    padding: 10px;
+    margin-top: 10px;
+    background: #f9f9f9;
+}
+
+/* 🌟 Recipe List Styling */
+.recipe-list {
+    display: flex;
+    gap: 25px;
+    margin-top: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+    justify-content: center;
+    /* Centering the recipe cards */
+    flex-wrap: wrap;
+
+}
+
+/* 🌟 Recipe Card Styling */
+.recipe-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.recipe-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Image Styling */
+.recipe-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Overlay Effect */
+.recipe-card::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.recipe-card:hover::before {
+    opacity: 1;
+}
+
+/* Title inside Recipe Card */
+.recipe-card h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+    transition: color 0.3s;
+}
+
+.recipe-card:hover h3 {
+    color: #046521;
+}
+
+/* Calories Text */
+.recipe-card p {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Recipe Button */
+.recipe-card button {
+    background: linear-gradient(45deg, #6beaa6, #027136);
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+.recipe-card button:hover {
+    background: linear-gradient(45deg, #71ec8b, #026424);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(189, 230, 67, 0.4);
+}
+
+/* Animation for Appearing Effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.recipe-card {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+
+.search-bar input {
+    width: 97%;
+    padding: 12px;
+    border: 2px solid #32e84d;
+
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.search-bar input:focus {
+    border-color: #34c10d;
+    outline: none;
+}
+
+.add-recipe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    background: #048e55;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.add-recipe i {
+    margin-right: 10px;
+}
+
+.add-recipe:hover {
+    background: #c2db20;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.popup input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.popup button {
+    padding: 10px;
+    background: #0ba33e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup button:hover {
+    background: #9fce1c;
+}
+
+
+
+/* 🌟 Add Recipe Form Styling */
+.add-recipe-form {
+    background: linear-gradient(135deg, #27bb10, #02551e);
+    /* Royal Blue & Deep Orange */
+    padding: 25px;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: center;
+    margin: auto;
+}
+
+/* 🌟 Input Field Styling */
+.add-recipe-form input,
+.add-recipe-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: black;
+    background: white;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Textarea Styling */
+.add-recipe-form textarea {
+    height: 80px;
+    resize: none;
+}
+
+/* Focus Effect */
+.add-recipe-form input:focus,
+.add-recipe-form textarea:focus {
+    outline: 2px solid #055b0f;
+    /* Sunset Orange */
+    box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
+}
+
+/* 🌟 Upload Button */
+.upload-btn {
+    background: linear-gradient(45deg, #2ec114, #044c0c);
+    border: none;
+    padding: 12px 18px;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    margin-top: 15px;
+}
+
+.upload-btn:hover {
+    background: linear-gradient(45deg, #12c636, #044215);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
+}
+
+
+.recipe-item {
+    display: flex;
+    flex-direction: column;
+    /* Stack elements vertically */
+    align-items: center;
+    /* Center text horizontally */
+    text-align: center;
+    background: url('https://clipart-library.com/new_gallery/120-1209434_nutritional-content-green-transparent-background-png.png');
+    padding: 15px;
+    background-repeat: no-repeat;
+    /* Prevent repetition */
+    background-size: contain;
+    /* Ensure the image fits properly */
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    min-height: 120px;
+    /* Increased height */
+}
+
+.recipe-item strong {
+    font-size: 18px;
+    color: #333;
+}
+
+.recipe-item p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.recipe-item small {
+    font-size: 12px;
+    color: #888;
+}
+
+/* .delete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: auto;
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+    background: darkred;
+} */
+
+.edit-btn, .delete-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #ff6347; /* Red for delete, change for edit */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.edit-btn:hover {
+    background: #f39c12; /* Change color on hover */
+}
+
+.delete-btn:hover {
+    background: #e74c3c;
+}
+
+button {
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+button:hover {
+    background: #0056b3;
+}

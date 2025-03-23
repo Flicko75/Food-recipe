@@ -1,5 +1,3 @@
-// Firebase & EmailJS setup 
-
 // CSS toggle methods
 const container = document.getElementById("container");
 const registerbtn = document.getElementById("register");
@@ -9,76 +7,94 @@ registerbtn.addEventListener("click", () => container.classList.add("active"));
 loginbtn.addEventListener("click", () => container.classList.remove("active"));
 
 // Signup: Send Request to Admin
-document.querySelector(".sign-up form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("signup_name").value.trim();
-    const email = document.getElementById("signup_email").value.trim();
-
-
-    if (!name || !email) {
-        alert("Please enter your name and email.");
-        return;
-    }
-
-    try {
-        await window.firebaseDB.collection("userRequests").add({
-            name,
-            email,
-            status: "pending"
-        });
-        alert("Request sent to admin. Wait for email with credentials.");
-    } catch (error) {
-        console.error("Error sending request:", error);
-        alert("Failed to send request. Try again later.");
-    }
-});
-
-
-// Login: Authenticate User
 document.querySelector(".sign-in form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const email = e.target[0].value.trim();
-    const password = e.target[1].value.trim();
+    // Get email and password input values
+    const email = document.querySelector(".sign-in input[type='text']").value.trim();
+    const password = document.querySelector(".sign-in input[type='password']").value.trim();
 
     if (!email || !password) {
-        alert("Please enter your email and password.");
+        alert("Please enter email and password.");
         return;
     }
 
     try {
-        // Query Firestore for a user with matching email
-        const querySnapshot = await window.firebaseDB.collection("users")
-            .where("email", "==", email)
-            .get();
+        // Authenticate user with Firebase
+        const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+        const user = userCredential.user;
+        console.log("✅ Logged in:", user.email);
 
-        if (querySnapshot.empty) {
-            alert("User not found. Please sign up first.");
-            return;
-        }
+        // Fetch user details from Firestore
+        const doc = await firebase.firestore().collection("users").doc(user.uid).get();
 
-        // Extract user data
-        let userData;
-        querySnapshot.forEach(doc => {
-            userData = doc.data();
-        });
+        if (doc.exists) {
+            const userData = doc.data();
+            console.log("✅ Firestore Data:", userData);
 
-        if (password === userData.password) {
-            if (userData.status === "approved" && userData.isDefaultPassword !== false) {
-                // If user is approved and still using the default password, go to reset-password.html
-                sessionStorage.setItem("userEmail", email);
+            if (userData.status === "approved" && userData.isDefaultPassword) {
+                sessionStorage.setItem("userEmail", userData.email);
                 window.location.href = "reset-password.html";
             } else {
-                // Otherwise, go to the dashboard
                 window.location.href = "user-dashboard.html";
             }
         } else {
-            alert("Incorrect password.");
+            console.error("❌ No user data found in Firestore.");
+            alert("User not found in Firestore.");
         }
     } catch (error) {
-        console.error("Login error:", error);
-        alert("Login failed. Try again.");
+        console.error("❌ Login error:", error.message);
+        alert("Login failed. Check your email and password.");
     }
 });
+
+
+// // Forgot Password: Send Request to Admin
+// document.getElementById("forgotPasswordRequest").addEventListener("click", async (e) => {
+//     e.preventDefault();
+
+//     const email = document.querySelector(".sign-in input[type='text']").value.trim();
+
+//     if (!email) {
+//         alert("Please enter your email before sending a forgot password request.");
+//         return;
+//     }
+
+//     try {
+//         // Fetch user details from Firestore
+//         const userQuery = await window.firebaseDB.collection("users")
+//             .where("email", "==", email)
+//             .get();
+
+//         if (userQuery.empty) {
+//             alert("No account found with this email.");
+//             return;
+//         }
+
+//         let userData;
+//         userQuery.forEach(doc => {
+//             userData = doc.data();
+//         });
+
+//         console.log("User found for forgot password:", userData); // Debugging
+
+//         if (!userData.name) {
+//             alert("Error: User data is missing a name. Please contact admin.");
+//             return;
+//         }
+
+//         // Send forgot password request with user’s name
+//         await window.firebaseDB.collection("userRequests").add({
+//             name: userData.name,  // Store user’s name
+//             email: userData.email,
+//             requestType: "forgot-password",
+//             status: "pending"
+//         });
+
+//         alert("Forgot password request sent to admin.");
+//     } catch (error) {
+//         console.error("Error sending forgot password request:", error);
+//         alert("Failed to send request. Try again later.");
+//     }
+// });
 
